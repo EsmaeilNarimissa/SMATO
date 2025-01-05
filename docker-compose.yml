@@ -1,0 +1,12 @@
+services:
+  smato:
+    build: .
+    volumes:
+      - ./.env:/app/.env
+    environment:
+      - PYTHONUNBUFFERED=1
+    stdin_open: true    # docker run -i
+    tty: true          # docker run -t
+    # Add these for better terminal handling
+    init: true
+    command: ["python", "-u", "main.py"]  # -u for unbuffered output
